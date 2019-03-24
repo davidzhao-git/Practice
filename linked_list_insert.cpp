@@ -90,8 +90,6 @@ int main() {
         node = node->next;
     }
     cout << endl;
-    
-    node = deleteNode(node, 3);
 }
 
 
