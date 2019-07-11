@@ -12,11 +12,16 @@ public class DogObjectMap {
 		Map<Integer, Dog> dogMap = new HashMap<Integer, Dog>();
 		dogMap.put(1, new Dog("Bobby", 30.0));
 		dogMap.put(2, new Dog("Sammy", 25.6));
-		dogMap.put(2, new Dog("Mike", 37.2));		// this replace the previous value
+		dogMap.put(3, new Dog("Mike", 37.2));		// this replace the previous value
 		
 		for (Map.Entry<Integer, Dog> entry : dogMap.entrySet()) {
 			System.out.println("Key: " + entry.getKey() + ", Value(Dog's name) " +
-								entry.getValue().getName());
+								entry.getValue().getName() + " weight is " + 
+								entry.getValue().getWeight()); 
 		}
+		
+		System.out.print(dogMap.keySet());
+		// System.out.print(dogMap.values());
+		
 	}
 }
