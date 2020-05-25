@@ -12,10 +12,19 @@ public class ArrayListApp {
 		list.add(2);
 		list.add(3);
 		
-//		System.out.println(list.size());
+		List<Character> charList = new ArrayList<>(); 
 		
-		System.out.println(list.get(0));
+		charList.add('h');
+		charList.add('b');
+		charList.add('u');
+		charList.add('e');
+	
+		System.out.println(charList.get(1));
+		charList.remove(1);
+		System.out.println(charList.get(1));
+		
 
+		
 	}
 
 }
