@@ -6,7 +6,7 @@ public class Demo {
 
 	public static void main(String[] args) {
 
-		// 4 rows, 2 columns 
+		// 3 rows, 2 columns 
 		int[][] twoDimArr = new int[3][2];
 		
 		twoDimArr[0][0] = 10;
@@ -18,6 +18,9 @@ public class Demo {
 		for (int i = 0; i < twoDimArr.length; i++) {
 			System.out.println(Arrays.toString(twoDimArr[i]));
 		}
+		
+	
+		
 		
 		int target = 10;
 		for (int i = 0; i < twoDimArr.length; i++) {
