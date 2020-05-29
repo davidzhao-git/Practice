@@ -28,10 +28,11 @@ public class HashMapDemo {
 		for (int i : map.values()) {
 			set.add(i); 
 		}
+		
 		System.out.println("Map size: " + map.size());
 		System.out.println("Set size: " + set.size());
 
-		
+	
 	} 
 
 }
