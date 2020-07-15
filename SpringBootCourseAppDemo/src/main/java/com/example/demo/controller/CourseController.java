@@ -10,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +32,13 @@ public class CourseController {
 	@Autowired
 	private CourseService service;
 	
+	@ModelAttribute("course")
+	public Course construct() {
+		return new Course(); 
+	}
+	
+	private ModelAndView modelView = new ModelAndView(); 
+	
 	@RequestMapping("/hello")
 	@ResponseBody
 	public String defaultMessage() {
@@ -39,11 +48,14 @@ public class CourseController {
 	@GetMapping("/")
 	public ModelAndView homePage() {
 		
-		ModelAndView mnv = new ModelAndView(); 
-		mnv.setViewName("home");
-		return mnv;
+		// ModelAndView mnv = new ModelAndView(); 
+		// mnv.setViewName("home");
+		// return mnv;
 		
+		modelView.setViewName("home");
+		return modelView; 
 	}
+
 	
 	@PostMapping("/addCourse")
 	public Course addCourse(@RequestBody Course course) {
@@ -84,22 +96,26 @@ public class CourseController {
 	@RequestMapping("/allCourses")
 	public ModelAndView courses() {
 		
-//		HttpSession session = request.getSession();
-		
-		
 		List<Course> allCourses = service.getCourses();
-		// System.out.println(allCourses);
-		
-		// model.addAttribute("allCourses", allCourses);
-		// return "courses";
-		
-		ModelAndView mnv = new ModelAndView(); 
-		mnv.addObject("allCourses", allCourses);
-		mnv.setViewName("courses");
-		return mnv;
-		
+		modelView.addObject("allCourses", allCourses);
+		modelView.setViewName("courses");
+		return modelView;
 	}
+	
+	@RequestMapping(value="/register", method= {RequestMethod.POST})
+	public ModelAndView register(@ModelAttribute("course") Course course) {
+		
+		service.saveCourse(course);
+		modelView.addObject("course", course);
 
+		modelView.setViewName("register");
+		
+		return modelView;
+	}
+	
+	
+	
+	
 	
 //	@RequestMapping("/courses")
 //	public String courses(String name, HttpSession session) {
