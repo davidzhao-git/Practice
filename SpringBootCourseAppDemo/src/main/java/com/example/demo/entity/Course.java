@@ -35,7 +35,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Testing Course [courseId=" + courseId + ", courseName=" + courseName + "]";
+		return "Course [courseId=" + courseId + ", courseName=" + courseName + "]";
 	} 
 
 }

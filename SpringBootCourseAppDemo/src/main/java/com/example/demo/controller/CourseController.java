@@ -102,7 +102,7 @@ public class CourseController {
 		return modelView;
 	}
 	
-	@RequestMapping(value="/register", method= {RequestMethod.POST})
+	@RequestMapping(value="/register", method={RequestMethod.POST})
 	public ModelAndView register(@ModelAttribute("course") Course course) {
 		
 		service.saveCourse(course);

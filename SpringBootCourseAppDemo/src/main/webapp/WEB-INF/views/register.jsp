@@ -23,5 +23,4 @@
 	<a href="allCourses">View All Courses</a>
 	
 </body>
-
 </html>
